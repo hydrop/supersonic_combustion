@@ -11,7 +11,7 @@
 #include "Domain.h"
 #include "include/define.h"
 
-namespace SupersonicCombustion {
+namespace comPcomB {
 
 class SimpleDomain: public Domain {
 public:

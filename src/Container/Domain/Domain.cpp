@@ -7,11 +7,10 @@
 
 #include "Domain.h"
 
-namespace SupersonicCombustion {
+namespace comPcomB {
 
 Domain::Domain() {
 	// TODO Auto-generated constructor stub
-
 }
 
 Domain::~Domain() {

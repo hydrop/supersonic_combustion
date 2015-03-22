@@ -1,26 +1,30 @@
 #include "Case.h"
 
 // constructor & destructor
-SupersonicCombustion::Case::Case(CaseSettings& runCaseSettings){
-	domain = new SimpleDomain();
+comPcomB::Case::Case(CaseSettings& runCaseSettings){
+	if (runCaseSettings.info.get("simpledomain",0)){
+	domains = new SimpleDomain;
+	domainCount = 1;
+	}
 }
 
-SupersonicCombustion::Case::~Case(void){
-	delete domain;
+comPcomB::Case::~Case(void){
+	if (domainCount==1) delete domains;
+	else delete[] domains;
 }
 
-void SupersonicCombustion::Case::setCaseName(std::string name){
+void comPcomB::Case::setCaseName(std::string name){
 	caseName = name;
 }
 
-void SupersonicCombustion::Case::prepare(void){
+void comPcomB::Case::prepare(void){
 //   alloc_domain();
 //   generate_geometry();
 //   generate_initial_condition());
 	int i, j, idx;
 
 	// When domain points to a SimpleCase object
-	SupersonicCombustion::SimpleDomain* sDomain = dynamic_cast<SupersonicCombustion::SimpleDomain*>(domain);
+	comPcomB::SimpleDomain* sDomain = dynamic_cast<comPcomB::SimpleDomain*>(domains);
 	if (sDomain != 0){
 		for (j = 0;j < sDomain->y;j++){
 			idx = j;
@@ -36,13 +40,13 @@ void SupersonicCombustion::Case::prepare(void){
 	return;
 }
 
-void SupersonicCombustion::Case::solve(void){
+void comPcomB::Case::solve(void){
 	int i, j, iter, idx;
 	int n,e,w,s;
 	real* t;
 
 	// When domain points to a SimpleCase object
-	SupersonicCombustion::SimpleDomain* sDomain = dynamic_cast<SupersonicCombustion::SimpleDomain*>(domain);
+	comPcomB::SimpleDomain* sDomain = dynamic_cast<comPcomB::SimpleDomain*>(domains);
 	if (sDomain != 0){
 		for (iter = 0;iter < 1000;iter++){
 			for (i = 1;i < sDomain->x - 1;i++){
@@ -65,8 +69,8 @@ void SupersonicCombustion::Case::solve(void){
 	return;
 }
 
-void SupersonicCombustion::Case::finishing(void){
-	SupersonicCombustion::SimpleDomain* sDomain = dynamic_cast<SupersonicCombustion::SimpleDomain*>(domain);
+void comPcomB::Case::finishing(void){
+	comPcomB::SimpleDomain* sDomain = dynamic_cast<comPcomB::SimpleDomain*>(domains);
 	if (sDomain != 0){
 		int i, j=50, idx;
 		for (i = 0;i < sDomain->x;i++){

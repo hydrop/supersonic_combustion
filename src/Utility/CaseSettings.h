@@ -11,13 +11,13 @@
 #include "boost/property_tree/ptree.hpp"
 #include "boost/property_tree/info_parser.hpp"
 
-namespace SupersonicCombustion {
+namespace comPcomB {
 
 class CaseSettings {
 public:
 	CaseSettings(int, char**);
 	virtual ~CaseSettings();
-	boost::property_tree::ptree settings;
+	boost::property_tree::ptree info;
 
 
 };

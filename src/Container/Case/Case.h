@@ -13,10 +13,10 @@
 #include <string>
 #include "include/define.h"
 #include "src/Utility/CaseSettings.h"
-#include "src/base/Domain/Domain.h"
-#include "src/base/Domain/SimpleDomain.h"
+#include "src/Container/Domain/Domain.h"
+#include "src/Container/Domain/SimpleDomain.h"
 
-namespace SupersonicCombustion{
+namespace comPcomB{
 
 class Case{
 public:
@@ -27,13 +27,17 @@ public:
 	// getter & setter
 	void setCaseName(std::string);
 
+	// member function
 	virtual void prepare();
 	virtual void solve();
 	virtual void finishing();
 
+	// member variable
+	Domain* domains;
+
 private:
 	std::string caseName;
-	Domain* domain;
+	int domainCount;
 };
 
 }

@@ -7,7 +7,7 @@
 
 #include "SimpleDomain.h"
 
-namespace SupersonicCombustion {
+namespace comPcomB {
 
 SimpleDomain::SimpleDomain() {
 	x=100;

@@ -1,0 +1,19 @@
+; Settings for a simulation case
+
+; Case_name determines result/log/status file names.
+case_name                   front_facing_step_coarse
+
+species_count               1
+geometry_filename           front_facing_step_coarse.geo
+initial_condition           0
+{
+    initial_filename        front_facing_step_coarse_150308_182635_5000.res
+}   
+
+target_residue              1.00e-5
+min_timestep                10
+max_timestep                10000
+result_export_interval      1000
+
+simpledomain                1
+;#include "file.info"    ; included file
